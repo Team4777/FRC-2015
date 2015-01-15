@@ -24,18 +24,20 @@ public class R extends IterativeRobot{
     public static boolean autonomousToggle = false;
     
     // Modifier Variables
-    public double liftMotorSpeed = 2.0;
-    public double robotDriveSpeed = 5.0;
+    public double liftMotorSpeed = 1.0;
+    public double robotDriveSpeed = 1.0;
     public double gyroRotationSpeed = 0.5;
-    public double gyroModifierSpeed = -0.05;
+    public double gyroSensitivity = -0.05;//(volts / 1000)
     public double timerDelay = 0.005;
     
     // Handles Joystick Input
-    public static int JoystickPort = 0; // USB Port
+    public static int JoystickPort = 1; // USB Port
+    public static Joystick xboxController = new Joystick(JoystickPort);
+    
+    // Handles Robot Drive Motors
     public int leftMotorChannel = 0; // PWM Port
     public int rightMotorChannel = 0; // PWN Port
     public RobotDrive theRobot = new RobotDrive(leftMotorChannel, rightMotorChannel);
-    public static Joystick xboxController = new Joystick(JoystickPort);
     
     // Gyro - Handles Trajectory Paths
     public int GyroChannel = 0;
@@ -51,7 +53,7 @@ public class R extends IterativeRobot{
     public static Relay pistonRightExtend = new Relay(pistonRelayExtendRightChannel);
     public static Compressor compressor = new Compressor(compressorChannel);
     
-    // Handles Motors
+    // Handles Lift Motors
     int liftMotorChannel = 0; // PWM Port
     public Victor liftMotor = new Victor(liftMotorChannel);
     
